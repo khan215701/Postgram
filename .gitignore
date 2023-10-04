@@ -1,0 +1,78 @@
+# Django
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+staticfiles/
+*.log
+
+# Secret keys
+*.env
+
+# Ignore migrations if you are using Django's default database
+*.db
+
+# Ignore local settings, which may contain sensitive information
+local_settings.py
+
+# Ignore generated HTML and coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Ignore Django Debug Toolbar data
+__debug__/
+
+# Ignore compiled Python files
+*.pyc
+*.pyo
+
+# Ignore the virtual environment
+venv/
+env/
+
+# Ignore IDE settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Ignore Node.js related files and directories
+node_modules/
+build/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore React build files (if using `npm run build`)
+/dist/
+
+# Ignore .env.local and .env.development.local (for React environment variables)
+.env.local
+.env.development.local
+
+# Ignore production environment files
+.env.production
+.env.local
+
+# Ignore logs and generated files
+log/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore backup files
+*~
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore SQLite database files
+*.sqlite3
+
+# Ignore compiled TypeScript files
+*.js
+*.js.map
+
+# Ignore Next.js build directory (if using Next.js)
+.next/
