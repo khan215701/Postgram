@@ -1,19 +1,12 @@
 import uuid
 from django.db import models
+from core.abstract.model import AbstractManager, AbstractModel
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import Http404
+
 
 # Create your models here.
-class UserManager(BaseUserManager):
-        # get user instance with provide public_id
-        def get_object_by_public_id(self, public_id):
-            try:
-                instance = self.get(public_id=public_id)
-                return instance
-            except(ObjectDoesNotExist, ValueError, TypeError):
-                raise Http404
-    
+class UserManager(BaseUserManager, AbstractManager):
+        
 
         def create_user(self, username, email, password=None, **kwargs):
             """ Create and return user with username, email and password """
@@ -51,8 +44,7 @@ class UserManager(BaseUserManager):
             return user
         
 
-class User(AbstractBaseUser, PermissionsMixin):
-    public_id = models.UUIDField(db_index=True, unique=True, default=uuid.uuid4, editable=False)
+class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
     username = models.CharField(db_index=True, max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -62,8 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now=True)
-    updated = models.DateTimeField(auto_now=True)
+  
     
     
     USERNAME_FIELD = 'email'
