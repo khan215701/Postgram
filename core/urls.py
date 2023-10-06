@@ -4,13 +4,14 @@ from core.user.views import UserViewSet
 from core.auth.viewset.register import RegisterViewSet
 from core.auth.viewset.login import LoginViewSet
 from core.auth.viewset.refresh import RefreshViewSet
-
+from core.post.views import PostViewSet
 router = routers.SimpleRouter()
 
 router.register(r'user', UserViewSet, basename='user')
 router.register(r'auth/register', RegisterViewSet, basename='register_user')
 router.register(r'auth/login', LoginViewSet, basename='login')
 router.register(r'auth/refresh', RefreshViewSet, basename='refresh')
+router.register(r'post', PostViewSet, basename='post')
 
 
 urlpatterns = [
